@@ -6,11 +6,10 @@ import './Button.css'
 const Button = ({orange, title, onClick}) => {
   return (
 	<button
-	className='btn'
-        //  className={classNames({
-        //     "btn": true,
-        //     "btnOrange": orange,
-        //  })}
+         className={classNames({
+            "btn": true,
+            "btnOrange": orange,
+         })}
          onClick={onClick}
       >
          {title}

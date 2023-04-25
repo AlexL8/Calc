@@ -1,12 +1,12 @@
 import React from 'react'
-import styles from'./Display.css'
+import './Display.css'
 
 
 const Display = ({logs, calculatedValue}) => {
   return (
-    <div className={styles.resultArea}>
-         <div className={styles.resultAreaCalulated}>{logs || "0"}</div>
-         <div className={styles.resultAreaResult}>{calculatedValue || 0}</div>
+    <div className="resultArea">
+         <div className="resultAreaCalulated">{logs || "0"}</div>
+         <div className="resultAreaResult">{calculatedValue || 0}</div>
 	</div>
   )
 }

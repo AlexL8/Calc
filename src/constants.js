@@ -15,7 +15,7 @@
 	TWO: '2',
 	THREE: '3',
 	SUBTRACTION: '-',
-	POINT: ',',
+	POINT: '.',
 	ZERO: '0',
 	EQUALS: '=',
 	ADD: '+'

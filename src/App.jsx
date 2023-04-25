@@ -38,6 +38,12 @@ function App() {
     setCalculatedValue(0)
   }
 
+  const handleClearLastSymb = () => {
+    const newStr = logs.slice(0, logs.length - 1)
+    setLogs(newStr)
+  }
+
+  // const reverseNumber = () => {}
 
   useEffect(() => {
     const handleKeyUpClick = (event) => {
@@ -109,29 +115,29 @@ function App() {
           <Display logs={logs} calculatedValue={calculatedValue}/>
           <div className="buttons">
             <Button title={VALUE_BUTTONS.CLEAR} onClick={() => handleClearClick()}/>
-            <Button title={VALUE_BUTTONS.PLUS_MINUS} onClick={() => addRecordInLogs(VALUE_BUTTONS.PLUS_MINUS)}/>
+            <Button title="+/-" onClick={() => addRecordInLogs(VALUE_BUTTONS.PLUS_MINUS)}/>
             <Button title={VALUE_BUTTONS.PERCENT} onClick={() => addRecordInLogs(VALUE_BUTTONS.PERCENT)}/>
-            <Button title={VALUE_BUTTONS.DELETE} onClick={() => addRecordInLogs(VALUE_BUTTONS.DELETE)}/>
+            <Button orange= {true} title={VALUE_BUTTONS.DELETE} onClick={() => handleClearLastSymb(VALUE_BUTTONS.DELETE)}/>
 
             <Button title={VALUE_BUTTONS.SEVEN} onClick={() => addRecordInLogs(VALUE_BUTTONS.SEVEN)}/>
             <Button title={VALUE_BUTTONS.EIGHT} onClick={() => addRecordInLogs(VALUE_BUTTONS.EIGHT)}/>
             <Button title={VALUE_BUTTONS.NINE} onClick={() => addRecordInLogs(VALUE_BUTTONS.NINE)}/>
-            <Button title={VALUE_BUTTONS.DIVIDE} onClick={() => addRecordInLogs(VALUE_BUTTONS.DIVIDE)}/>
+            <Button orange= {true} title={VALUE_BUTTONS.DIVIDE} onClick={() => addRecordInLogs(VALUE_BUTTONS.DIVIDE)}/>
 
             <Button title={VALUE_BUTTONS.FOUR} onClick={() => addRecordInLogs(VALUE_BUTTONS.FOUR)}/>
             <Button title={VALUE_BUTTONS.FIVE} onClick={() => addRecordInLogs(VALUE_BUTTONS.FIVE)}/>
             <Button title={VALUE_BUTTONS.SIX} onClick={() => addRecordInLogs(VALUE_BUTTONS.SIX)}/>
-            <Button title={VALUE_BUTTONS.MULTIPLY} onClick={() => addRecordInLogs(VALUE_BUTTONS.MULTIPLY)}/>
+            <Button orange= {true} title={VALUE_BUTTONS.MULTIPLY} onClick={() => addRecordInLogs(VALUE_BUTTONS.MULTIPLY)}/>
 
             <Button title={VALUE_BUTTONS.ONE} onClick={() => addRecordInLogs(VALUE_BUTTONS.ONE)}/>
             <Button title={VALUE_BUTTONS.TWO} onClick={() => addRecordInLogs(VALUE_BUTTONS.TWO)}/>
             <Button title={VALUE_BUTTONS.THREE} onClick={() => addRecordInLogs(VALUE_BUTTONS.THREE)}/>
-            <Button title={VALUE_BUTTONS.SUBTRACTION} onClick={() => addRecordInLogs(VALUE_BUTTONS.SUBTRACTION)}/>
+            <Button orange= {true} title={VALUE_BUTTONS.SUBTRACTION} onClick={() => addRecordInLogs(VALUE_BUTTONS.SUBTRACTION)}/>
 
             <Button title={VALUE_BUTTONS.POINT} onClick={() => addRecordInLogs(VALUE_BUTTONS.POINT)}/>
             <Button title={VALUE_BUTTONS.ZERO} onClick={() => addRecordInLogs(VALUE_BUTTONS.ZERO)}/>
             <Button title={VALUE_BUTTONS.EQUALS} onClick={() => handleClickOnCalcButton(VALUE_BUTTONS.EQUALS)}/>
-            <Button title={VALUE_BUTTONS.ADD} onClick={() => addRecordInLogs(VALUE_BUTTONS.ADD)}/>
+            <Button orange= {true} title={VALUE_BUTTONS.ADD} onClick={() => addRecordInLogs(VALUE_BUTTONS.ADD)}/>
             </div>
         </div>
     </div>

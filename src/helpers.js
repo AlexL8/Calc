@@ -7,28 +7,28 @@ export const calcByOperator = (a, b, operator) => {
 	console.log(a, b, operator);
 switch(operator) {
     case VALUE_BUTTONS.ADD:
-        return a + b
+        return a + b;
 
     case VALUE_BUTTONS.SUBTRACTION:
-    	return a - b
+    	return a - b;
 
     case VALUE_BUTTONS.MULTIPLY:
-        return a * b
+        return a * b;
 
     case VALUE_BUTTONS.DIVIDE:
-        return a / b
+        return a / b;
 
 	case VALUE_BUTTONS.PLUS_MINUS:
-		return a+1
+		return a * (-1);
 
     case VALUE_BUTTONS.PERCENT:
-        return b / 100 * a
+        return b / 100 * a;
    }
 }
 
 export const calculate = (logs)  => {
    let result = 0
-   const logsArray = logs.split(/(\+|\-|\*|\/|\%|\±|)/)
+   const logsArray = logs.split(/(\+|\-|\*|\/|\%|\±)/)
 
    logsArray.forEach((record, index, arr) => {
       const recordIsOperator = isOperator(record)
