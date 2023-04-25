@@ -1,37 +1,137 @@
 import './App.css';
+import { useState, useEffect } from 'react';
+import Button from './Components/Buttons/Button';
+import Display from './Components/Display/Display';
+import { VALUE_BUTTONS } from './constants';
+import { calculate, isOperator } from './helpers';
 
 function App() {
+  const [logs, setLogs] = useState("");
+  const [calculatedValue, setCalculatedValue ] = useState(0);
+  const addRecordInLogs = (record) => {
+    const recordIsOperator = isOperator(record)
+    const lastRecordInLog = logs[logs.length - 1]
+    const lastRecordInLogIsOperator = isOperator(lastRecordInLog)
+
+    if (logs === "" && recordIsOperator) {
+      return
+    }
+
+    if ((logs === "" || logs === "0") && record.includes("0")) {
+      return
+    }
+
+    if (lastRecordInLogIsOperator && recordIsOperator) {
+      setLogs(logs.slice(0, -1) + record)
+      return
+    }
+    setLogs(logs + record)
+
+  }
+
+  const handleClickOnCalcButton = () => {
+    setCalculatedValue(calculate(logs))
+  }
+
+  const handleClearClick = () => {
+    setLogs('')
+    setCalculatedValue(0)
+  }
+
+
+  useEffect(() => {
+    const handleKeyUpClick = (event) => {
+
+      switch (event.key) {
+          case "Enter":
+            handleClickOnCalcButton()
+            break;
+          case "*":
+            addRecordInLogs("*")
+            break;
+          case "/":
+            addRecordInLogs("/")
+            break;
+          case "-":
+            addRecordInLogs("-")
+            break;
+          case "+":
+            addRecordInLogs("+")
+            break;
+          case "Delete":
+            handleClearClick()
+            break;
+          case "Backspace":
+            handleClearClick()
+            break;
+          case "7":
+            addRecordInLogs("7")
+            break;
+          case "8":
+            addRecordInLogs("8")
+            break;
+          case "9":
+            addRecordInLogs("9")
+            break;
+          case "4":
+            addRecordInLogs("4")
+            break;
+          case "5":
+            addRecordInLogs("5")
+            break;
+          case "6":
+            addRecordInLogs("6")
+            break;
+          case "1":
+            addRecordInLogs("1")
+            break;
+          case "2":
+            addRecordInLogs("2")
+            break;
+          case "3":
+            addRecordInLogs("3")
+            break;
+          case "0":
+            addRecordInLogs("0")
+            break;
+          default:
+            return;
+      }
+    }
+    window.addEventListener("keyup", handleKeyUpClick);
+
+    return () => window.removeEventListener("keyup", handleKeyUpClick)
+  }, [logs])
+
   return (
     <div className="calc">
         <div className="wrapper">
-            <div className="calc-display">
-              <p>0</p>
-            </div>
-            <div className="buttons">
-              <button className="btn">AC</button>
-              <button className="btn">+/-</button>
-              <button className="btn">%</button>
-              <button className="btn bg-orange"></button>
+          <Display logs={logs} calculatedValue={calculatedValue}/>
+          <div className="buttons">
+            <Button title={VALUE_BUTTONS.CLEAR} onClick={() => handleClearClick()}/>
+            <Button title={VALUE_BUTTONS.PLUS_MINUS} onClick={() => addRecordInLogs(VALUE_BUTTONS.PLUS_MINUS)}/>
+            <Button title={VALUE_BUTTONS.PERCENT} onClick={() => addRecordInLogs(VALUE_BUTTONS.PERCENT)}/>
+            <Button title={VALUE_BUTTONS.DELETE} onClick={() => addRecordInLogs(VALUE_BUTTONS.DELETE)}/>
 
-              <button className="btn">7</button>
-              <button className="btn">8</button>
-              <button className="btn">9</button>
-              <button className="btn bg-orange">/</button>
+            <Button title={VALUE_BUTTONS.SEVEN} onClick={() => addRecordInLogs(VALUE_BUTTONS.SEVEN)}/>
+            <Button title={VALUE_BUTTONS.EIGHT} onClick={() => addRecordInLogs(VALUE_BUTTONS.EIGHT)}/>
+            <Button title={VALUE_BUTTONS.NINE} onClick={() => addRecordInLogs(VALUE_BUTTONS.NINE)}/>
+            <Button title={VALUE_BUTTONS.DIVIDE} onClick={() => addRecordInLogs(VALUE_BUTTONS.DIVIDE)}/>
 
-              <button className="btn">4</button>
-              <button className="btn">5</button>
-              <button className="btn ">6</button>
-              <button className="btn bg-orange">x</button>
+            <Button title={VALUE_BUTTONS.FOUR} onClick={() => addRecordInLogs(VALUE_BUTTONS.FOUR)}/>
+            <Button title={VALUE_BUTTONS.FIVE} onClick={() => addRecordInLogs(VALUE_BUTTONS.FIVE)}/>
+            <Button title={VALUE_BUTTONS.SIX} onClick={() => addRecordInLogs(VALUE_BUTTONS.SIX)}/>
+            <Button title={VALUE_BUTTONS.MULTIPLY} onClick={() => addRecordInLogs(VALUE_BUTTONS.MULTIPLY)}/>
 
-              <button className="btn">1</button>
-              <button className="btn">2</button>
-              <button className="btn">3</button>
-              <button className="btn bg-orange">-</button>
+            <Button title={VALUE_BUTTONS.ONE} onClick={() => addRecordInLogs(VALUE_BUTTONS.ONE)}/>
+            <Button title={VALUE_BUTTONS.TWO} onClick={() => addRecordInLogs(VALUE_BUTTONS.TWO)}/>
+            <Button title={VALUE_BUTTONS.THREE} onClick={() => addRecordInLogs(VALUE_BUTTONS.THREE)}/>
+            <Button title={VALUE_BUTTONS.SUBTRACTION} onClick={() => addRecordInLogs(VALUE_BUTTONS.SUBTRACTION)}/>
 
-              <button className="btn">,</button>
-              <button className="btn">0</button>
-              <button className="btn">=</button>
-              <button className="btn bg-orange">+</button>
+            <Button title={VALUE_BUTTONS.POINT} onClick={() => addRecordInLogs(VALUE_BUTTONS.POINT)}/>
+            <Button title={VALUE_BUTTONS.ZERO} onClick={() => addRecordInLogs(VALUE_BUTTONS.ZERO)}/>
+            <Button title={VALUE_BUTTONS.EQUALS} onClick={() => handleClickOnCalcButton(VALUE_BUTTONS.EQUALS)}/>
+            <Button title={VALUE_BUTTONS.ADD} onClick={() => addRecordInLogs(VALUE_BUTTONS.ADD)}/>
             </div>
         </div>
     </div>

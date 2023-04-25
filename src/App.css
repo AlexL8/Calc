@@ -101,7 +101,7 @@ button {
   border-radius: 50px;
   padding: 0 30px;
 }
-
+/* 
 .calc-display {
   width: 100%;
   height: 40%;
@@ -117,7 +117,7 @@ button {
   font-size: 4rem;
   color: #ff9d0a;
   margin: 0;
-}
+} */
 
 .buttons {
   display: grid;
@@ -127,7 +127,7 @@ button {
   justify-items: center;
 }
 
-.btn {
+/* .btn {
   width: 40px;
   height: 40px;
   background-color: #f1f1f3;
@@ -152,6 +152,6 @@ button {
   background-color: #a1a0a3;
 }  */
 
-.btn.bg-orange {
+/* .btn.bg-orange {
   background-color: #ff9d0a;
-}
+} */ 

@@ -1,0 +1,22 @@
+ export const VALUE_BUTTONS = {
+	CLEAR: 'AC',
+	PLUS_MINUS: '±',
+	PERCENT: '%',
+	DELETE: 'DEL',
+	SEVEN: '7',
+	EIGHT: '8',
+	NINE: '9',
+	DIVIDE: '/',
+	FOUR: '4',
+	FIVE: '5',
+	SIX: '6',
+	MULTIPLY: '*',
+	ONE: '1',
+	TWO: '2',
+	THREE: '3',
+	SUBTRACTION: '-',
+	POINT: ',',
+	ZERO: '0',
+	EQUALS: '=',
+	ADD: '+'
+}
