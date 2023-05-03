@@ -11,15 +11,16 @@ function App() {
   const addRecordInLogs = (record) => {
     const recordIsOperator = isOperator(record)
     const lastRecordInLog = logs[logs.length - 1]
+    // console.log('lasRecordinLOg', lastRecordInLog);
     const lastRecordInLogIsOperator = isOperator(lastRecordInLog)
 
     if (logs === "" && recordIsOperator) {
       return
     }
 
-    if ((logs === "" || logs === "0") && record.includes("0")) {
-      return
-    }
+    // if ((logs === "" || logs === "0") && record.includes("0")) {
+    //   return
+    // }
 
     if (lastRecordInLogIsOperator && recordIsOperator) {
       setLogs(logs.slice(0, -1) + record)
@@ -43,7 +44,10 @@ function App() {
     setLogs(newStr)
   }
 
-  // const reverseNumber = () => {}
+  const handleReverseNumber = () => {
+    setCalculatedValue(logs * -1);
+  }
+
 
   useEffect(() => {
     const handleKeyUpClick = (event) => {
@@ -115,7 +119,8 @@ function App() {
           <Display logs={logs} calculatedValue={calculatedValue}/>
           <div className="buttons">
             <Button title={VALUE_BUTTONS.CLEAR} onClick={() => handleClearClick()}/>
-            <Button title="+/-" onClick={() => addRecordInLogs(VALUE_BUTTONS.PLUS_MINUS)}/>
+            {/* <Button title="+/-" onClick={() => addRecordInLogs(VALUE_BUTTONS.PLUS_MINUS)}/> */}
+            <Button title="+/-" onClick={() => handleReverseNumber(VALUE_BUTTONS.PLUS_MINUS)}/>
             <Button title={VALUE_BUTTONS.PERCENT} onClick={() => addRecordInLogs(VALUE_BUTTONS.PERCENT)}/>
             <Button orange= {true} title={VALUE_BUTTONS.DELETE} onClick={() => handleClearLastSymb(VALUE_BUTTONS.DELETE)}/>
 

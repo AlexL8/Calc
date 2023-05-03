@@ -23,27 +23,32 @@ switch(operator) {
 
     case VALUE_BUTTONS.PERCENT:
         return b / 100 * a;
-   }
+    // default: 
+    //     return
+    }
 }
 
 export const calculate = (logs)  => {
    let result = 0
+//    console.log('logs', logs)
    const logsArray = logs.split(/(\+|\-|\*|\/|\%|\±)/)
+//    console.log('logsSplit',logsArray);
 
    logsArray.forEach((record, index, arr) => {
       const recordIsOperator = isOperator(record)
-      const isLastRecord = index === arr.length - 1
-
+    //   const isLastRecord = index === arr.length - 1
+    //   console.log('record', record);
       if (recordIsOperator) {
          const leftOperand = Number(arr[index - 1])
          const rightOperand = Number(arr[index + 1])
 
-         arr[index + 1] = String(calcByOperator(leftOperand, rightOperand, record))
+        //  arr[index + 1] = String(calcByOperator(leftOperand, rightOperand, record))
+         result = Number(calcByOperator(leftOperand, rightOperand, record))
       }
 
-      if (isLastRecord) {
-         result = Number(record)
-      }
+    //   if (isLastRecord) {
+    //      result = Number(record)
+    //   }
    })
    return result
 }
